@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Simple Guessing Game</title>
+    <title>A Simple Number Guessing Game</title>
 </head>
 <body>
-<h1>A Number Guessing Game</h1>
+<h1>A Simple Number Guessing Game</h1>
 <h2>Pick a Level!</h2>
   <button id="easy" onclick="instructions.textContent = 'Guess a number from 1 to 10!'; game = 'easy';" >Easy Mode</button>
   <button id="normal" onclick="instructions.textContent = 'Guess a number from 1 to 50!'; game = 'normal';" >Normal Mode</button>
@@ -16,11 +16,15 @@
   <p id="instructions">    </p>
   <br>
   <input id="guess" type="number">
-  <button onclick= "check()" type="submit" id="submit">Guess!</button>
+  <button onclick= "check()" type="submit" id="submit" >Guess!</button>
   <br>
   <p id="hint"></p>
+  <h3 id="wins_text">Wins: </h3>
 <script>
+  
+  var wins = 0;
   var hint = document.querySelector("#hint");
+  var wins_text = document.querySelector("#wins_text");
   var easyNum = Math.floor((Math.random() * 10) + 1);
   var normalNum = Math.floor((Math.random() * 50) + 1);
   var hardNum = Math.floor((Math.random() * 100) + 1);
@@ -30,20 +34,24 @@
     var num = document.getElementById("guess").value;
     if(game == "easy"){
       if(num > easyNum){
-        hint.textContent = "Too High!"
+        hint.textContent = "Too High!";
       }else if (num < easyNum){
-        hint.textContent = "Too Low!"
+        hint.textContent = "Too Low!";
       }else if (num == easyNum){
-        hint.textContent = "Perfect!"
+        hint.textContent = "Perfect!";
+        wins++;
+        wins_text.textContent = "Wins: " + wins;
       }
     }
     if(game == "hard"){
       if(num > hardNum){
-        hint.textContent = "Too High!"
+        hint.textContent = "Too High!";
       }else if (num < hardNum){
-        hint.textContent = "Too Low!"
+        hint.textContent = "Too Low!";
       }else if (num == hardNum){
-        hint.textContent = "Perfect!"
+        hint.textContent = "Perfect!";
+        wins++;
+        wins_text.textContent = "Wins: " + wins;
       }
     }
     if(game == "normal"){
@@ -53,13 +61,60 @@
         hint.textContent = "Too Low!"
       }else if (num == normalNum){
         hint.textContent = "Perfect!"
+        wins++
+        wins_text.textContent = "Wins: " + wins;
       }
     }
+    // if(wins > 24){
+    //   document.getElementById("easy").disabled = true;
+    //   document.getElementById("instructions").textContent = "Guess a number from 1 to 50!"
+    //   game="normal"
+    //   alert("You've outgrown easy mode! Try normal!")
+    // }
+    // if(wins > 49){
+    //   document.getElementById("normal").disabled = true;
+    //   document.getElementById("instructions").textContent = "Guess a number from 1 to 100!"
+    //   game="hard"
+    //   alert("You've outgrown normal mode! Try hard!")
+    // }
+    // if(wins > 74){
+    //   document.getElementById("hard").disabled = true;
+    //   document.getElementById("instructions").textContent = "All Done!"
+    //   game=""
+    //   alert("You've outgrown my simple guessing game! Thanks for playing and trying all the modes!")
+    // }
 }
 </script>
 <style>
-  
+  body{
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color:lightcoral;
+    font-size: xx-large;
+  }
+
+  button{
+    font-size: x-large;
+    padding: 1%;
+    border-radius: 15%;
+    border-color: rgb(138, 76, 76);
+  }
+
+  button:hover{
+    background-color: rgb(138, 76, 76);
+  }
+
+  input{
+    font-size: xx-large;
+    width: 75px;
+    height: 75px;
+    text-align: center;
+  }
+
+  footer{
+    padding-top: 15%;
+  }
 </style>
 </body>
-<footer>made by K.Takeya Paul on 10/25/24</footer>
+<footer>made by K.Takeya Paul, updated on 11/8/24</footer>
 </html>
