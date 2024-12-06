@@ -41,6 +41,7 @@
         hint.textContent = "Perfect!";
         wins++;
         wins_text.textContent = "Wins: " + wins;
+          easyNum = Math.floor((Math.random() * 10) + 1);
       }
     }
     if(game == "hard"){
@@ -52,6 +53,7 @@
         hint.textContent = "Perfect!";
         wins++;
         wins_text.textContent = "Wins: " + wins;
+          Math.floor((Math.random() * 100) + 1);
       }
     }
     if(game == "normal"){
@@ -63,6 +65,7 @@
         hint.textContent = "Perfect!"
         wins++
         wins_text.textContent = "Wins: " + wins;
+          normalNum = Math.floor((Math.random() * 50) + 1);
       }
     }
     // if(wins > 24){
